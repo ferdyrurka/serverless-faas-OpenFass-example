@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Tests\validator;
+namespace App\Tests\Validator;
 
-use App\validator\UsernameValidator;
+use App\Validator\UsernameValidator;
 use PHPUnit\Framework\TestCase;
 
 class UsernameValidatorTest extends TestCase
