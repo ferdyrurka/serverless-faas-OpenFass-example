@@ -28,7 +28,21 @@ git clone https://github.com/openfaas/faas \
   ./deploy_stack.sh \
   cd ../ \
   sudo rm -R ./faas
+```
+
+After command, you find in CLI your password and username to OpenFass.
+
+**Example data:**
+
+[Credentials]
+
+username: admin
  
+password: 547d9s578c23309bb1aa020e6395b6e7c0cc426d6a4707c513f
+ 
+echo -n 5473d0578s23309bb1aa020e6395b6e7c0cc42656d4707c513f | faas-cli login --username=admin --password-stdin
+
+```bash
 curl -sL https://cli.openfaas.com | sudo sh
 ```
 
