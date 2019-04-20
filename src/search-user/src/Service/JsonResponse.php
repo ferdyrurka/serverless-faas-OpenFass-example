@@ -10,7 +10,7 @@ namespace App\Service;
 class JsonResponse
 {
     /**
-     * @var string
+     * @var array
      */
     private $message;
 
@@ -26,11 +26,11 @@ class JsonResponse
 
     /**
      * JsonResponse constructor.
-     * @param string $message
+     * @param array $message
      * @param bool $success
      * @param int $statusCode
      */
-    public function __construct(string $message, bool $success = true, int $statusCode = 200)
+    public function __construct(array $message, bool $success = true, int $statusCode = 200)
     {
         $this->message = $message;
         $this->success = $success;
