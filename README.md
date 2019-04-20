@@ -30,7 +30,7 @@ git clone https://github.com/openfaas/faas \
   sudo rm -R ./faas
 ```
 
-After command, you find in CLI your password and username to OpenFass.
+After execute command, you find in CLI your password and username to OpenFass.
 
 **Example data:**
 
