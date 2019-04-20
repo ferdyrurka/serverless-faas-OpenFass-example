@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\validator;
+namespace App\Validator;
 
 /**
  * Interface ValidatorInterface
