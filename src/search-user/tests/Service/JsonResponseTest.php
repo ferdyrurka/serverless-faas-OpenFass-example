@@ -15,7 +15,8 @@ class JsonResponseTest extends TestCase
     /**
      * @test
      */
-    public function responseTest(): void {
+    public function responseTest(): void
+    {
         $message = ['Hello World'];
         $statusCode = 304;
         $success = false;

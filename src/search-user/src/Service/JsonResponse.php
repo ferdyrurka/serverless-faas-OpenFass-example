@@ -40,7 +40,8 @@ class JsonResponse
     /**
      * @return string
      */
-    public function getContent(): string {
+    public function getContent(): string
+    {
         return \json_encode(
             [
                 'statusCode' => $this->statusCode,
