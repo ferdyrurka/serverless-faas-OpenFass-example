@@ -9,4 +9,11 @@ namespace App\Exception;
  */
 class InvalidArgsException extends SearchUserException
 {
+    /**
+     * InvalidArgsException constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct('Invalid arguments!');
+    }
 }
