@@ -9,4 +9,11 @@ namespace App\Exception;
  */
 class NotFoundException extends SearchUserException
 {
+    /**
+     * @return int
+     */
+    public function getStatusCode(): int
+    {
+        return 404;
+    }
 }

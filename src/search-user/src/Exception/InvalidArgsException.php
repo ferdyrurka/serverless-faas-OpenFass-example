@@ -16,4 +16,12 @@ class InvalidArgsException extends SearchUserException
     {
         parent::__construct('Invalid arguments!');
     }
+
+    /**
+     * @return int
+     */
+    public function getStatusCode(): int
+    {
+        return 400;
+    }
 }
