@@ -11,6 +11,9 @@
     <filter>
         <whitelist>
             <directory>./src</directory>
+            <exclude>
+                <directory>./src/Exception</directory>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>
