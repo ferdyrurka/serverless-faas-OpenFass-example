@@ -22,12 +22,11 @@ Requirements:
 ```bash
 docker swarm init
 
-git clone https://github.com/openfaas/faas \
-  cd faas \
-  git checkout 0.13.0 \
-  ./deploy_stack.sh \
-  cd ../ \
-  sudo rm -R ./faas
+git clone https://github.com/openfaas/faas.git
+cd faas
+git checkout 0.13.0
+sh deploy_stack.sh
+cd ../ && sudo rm -r ./faas
 ```
 
 After execute command, you find in CLI your password and username to OpenFass.
