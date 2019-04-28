@@ -8,10 +8,8 @@ Soon
 
 - Docker and Docker Swarm
 - OpenFass
-- Rust
 - C#
 - PHP
-- Python
 
 ## Install on Linux
 
