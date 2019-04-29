@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Common\Config\Component;
+namespace App\Common\Config\Factory;
 
 /**
- * Class DbalConfigConfigComponent
+ * Class DbalConfigConfigFactory
  * @package App\Common\Config\Component
  */
-class DbalConfigConfigComponent implements ConfigComponentInterface
+class DbalConfigConfigFactory implements ConfigComponentFactory
 {
     /**
      * @return string

@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Common\Config\Component;
+namespace App\Common\Config\Factory;
 
 /**
- * Interface ConfigComponentInterface
+ * Interface ConfigComponentFactory
  * @package App\Common\Config\Component
  */
-interface ConfigComponentInterface
+interface ConfigComponentFactory
 {
     /**
      * @return string
