@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Tests\Service;
+namespace App\Tests\Common\Response;
 
-use App\Service\JsonResponse;
+use App\Common\Response\JsonResponse;
 use PHPUnit\Framework\TestCase;
 
 /**

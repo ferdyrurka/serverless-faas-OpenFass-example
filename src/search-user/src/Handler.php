@@ -4,7 +4,7 @@ namespace App;
 
 use App\Exception\InvalidArgsException;
 use App\Exception\NotFoundException;
-use App\Service\JsonResponse;
+use App\Common\Response\JsonResponse;
 use App\Service\UserService;
 
 /**

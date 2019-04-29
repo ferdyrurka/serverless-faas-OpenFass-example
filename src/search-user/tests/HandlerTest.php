@@ -6,7 +6,7 @@ namespace App\Tests;
 use App\Exception\InvalidArgsException;
 use App\Exception\NotFoundException;
 use App\Handler;
-use App\Service\JsonResponse;
+use App\Common\Response\JsonResponse;
 use App\Service\UserService;
 use Mockery;
 use PHPUnit\Framework\TestCase;
@@ -57,8 +57,9 @@ class HandlerTest extends TestCase
     }
 
     /**
-     * @test
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @test
      */
     public function notRequiredParameters(): void
     {
@@ -68,8 +69,9 @@ class HandlerTest extends TestCase
     }
 
     /**
-     * @test
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @test
      */
     public function notFoundException(): void
     {
@@ -88,8 +90,9 @@ class HandlerTest extends TestCase
     }
 
     /**
-     * @test
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @test
      */
     public function invalidArgsException(): void
     {
@@ -108,8 +111,9 @@ class HandlerTest extends TestCase
     }
 
     /**
-     * @test
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @test
      */
     public function handleOk(): void
     {
