@@ -1,0 +1,4 @@
+language: php7-3
+fprocess: php index.php
+welcome_message: |
+  You have created a new function which uses PHP 7.3.
