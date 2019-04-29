@@ -10,6 +10,7 @@ Soon
 - OpenFass
 - C#
 - PHP
+- Rust
 
 ## Install on Linux
 
