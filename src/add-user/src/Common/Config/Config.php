@@ -36,7 +36,7 @@ class Config
     private function parseConfig(string $pathFile): ?array
     {
         if (!file_exists($pathFile)) {
-            throw new InvalidFileConfigException('Config file doesn\'t exist by path: ' . $pathFile);
+            throw new InvalidFileConfigException('Config file doesn\'t exist by path: ' . $pathFile . ' ' . getcwd());
         }
 
         return Yaml::parseFile($pathFile);
