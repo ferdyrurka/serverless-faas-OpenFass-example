@@ -29,6 +29,18 @@ class Config
     }
 
     /**
+     * @return array
+     */
+    public function getConfig(): array
+    {
+        if (empty($this->config)) {
+            return [];
+        }
+
+        return $this->config;
+    }
+
+    /**
      * @param string $pathFile
      * @return array|null
      * @throws InvalidFileConfigException
@@ -40,17 +52,5 @@ class Config
         }
 
         return Yaml::parseFile($pathFile);
-    }
-
-    /**
-     * @return array
-     */
-    public function getConfig(): array
-    {
-        if (empty($this->config)) {
-            return [];
-        }
-
-        return $this->config;
     }
 }
