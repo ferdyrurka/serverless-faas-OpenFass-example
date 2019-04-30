@@ -1,0 +1,7 @@
+dbal:
+  connection:
+    dbname: 'open-faas-example'
+    user: 'root'
+    password: 'gPwWzFxat4jWrs2p'
+    host: 'database'
+    driver: 'pdo_mysql'
