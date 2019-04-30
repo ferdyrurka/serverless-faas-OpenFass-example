@@ -33,6 +33,14 @@ class ConnectionDatabase
     }
 
     /**
+     * @return Connection
+     */
+    public function getConnection(): Connection
+    {
+        return $this->connection;
+    }
+
+    /**
      * @return array
      * @throws InvalidDbalConfigException
      * @throws \App\Exception\InvalidFileConfigException
@@ -58,13 +66,5 @@ class ConnectionDatabase
     private function createConnection(): Connection
     {
         return DriverManager::getConnection($this->getConnectionParams()['dbal']['connection'], new Configuration());
-    }
-
-    /**
-     * @return Connection
-     */
-    public function getConnection(): Connection
-    {
-        return $this->connection;
     }
 }
