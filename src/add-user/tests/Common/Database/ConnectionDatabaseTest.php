@@ -38,7 +38,7 @@ class ConnectionDatabaseTest extends TestCase
      */
     public function invalidDbalConfigException(): void
     {
-        $this->configFactory->shouldReceive('getConfig')->once()->andReturnNull();
+        $this->configFactory->shouldReceive('getConfig')->once()->andReturn(['dbal' => []]);
 
         $this->expectException(InvalidDbalConfigException::class);
         new ConnectionDatabase();
@@ -54,14 +54,21 @@ class ConnectionDatabaseTest extends TestCase
      */
     public function connectionOk(): void
     {
-        $this->configFactory->shouldReceive('getConfig')->once()->andReturn([true]);
+        $this->configFactory->shouldReceive('getConfig')->once()->andReturn(
+            [
+                'dbal' => [
+                    'connection' => [
+                        true
+                        ]
+                    ]
+            ]
+        );
 
         $driverManager = Mockery::mock('alias:' . DriverManager::class);
         $driverManager->shouldReceive('getConnection')
             ->withArgs(
                 function (array $args, object $conf): bool {
                     if (!$conf instanceof Configuration ||
-                        !isset($args[0]) ||
                         !$args[0]
                     ) {
                         return false;

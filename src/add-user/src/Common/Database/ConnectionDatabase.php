@@ -40,8 +40,9 @@ class ConnectionDatabase
     private function getConnectionParams(): array
     {
         $configFactory = new Config(new DbalConfigFactory());
+        $config = $configFactory->getConfig();
 
-        if (empty($config = $configFactory->getConfig())) {
+        if (!isset($config['dbal']['connection'])) {
             throw new InvalidDbalConfigException('Invalid configuration to connection database');
         }
 
@@ -56,7 +57,7 @@ class ConnectionDatabase
      */
     private function createConnection(): Connection
     {
-        return DriverManager::getConnection($this->getConnectionParams(), new Configuration());
+        return DriverManager::getConnection($this->getConnectionParams()['dbal']['connection'], new Configuration());
     }
 
     /**
