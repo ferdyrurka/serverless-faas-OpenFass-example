@@ -7,7 +7,7 @@ namespace App\Common\Config\Factory;
  * Class DbalConfigFactory
  * @package App\Common\Config\Component
  */
-class DbalConfigFactory implements ConfigFactory
+class DbalConfigFactory implements ConfigFactoryInterface
 {
     /**
      * @return string

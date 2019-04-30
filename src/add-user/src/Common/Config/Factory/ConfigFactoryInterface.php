@@ -7,7 +7,7 @@ namespace App\Common\Config\Factory;
  * Interface ConfigFactory
  * @package App\Common\Config\Component
  */
-interface ConfigFactory
+interface ConfigFactoryInterface
 {
     /**
      * @return string
