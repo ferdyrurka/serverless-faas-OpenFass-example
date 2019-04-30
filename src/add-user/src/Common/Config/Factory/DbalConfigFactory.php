@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace App\Common\Config\Factory;
 
 /**
- * Class DbalConfigConfigFactory
+ * Class DbalConfigFactory
  * @package App\Common\Config\Component
  */
-class DbalConfigConfigFactory implements ConfigComponentFactory
+class DbalConfigFactory implements ConfigFactory
 {
     /**
      * @return string

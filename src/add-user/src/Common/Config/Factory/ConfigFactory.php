@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace App\Common\Config\Factory;
 
 /**
- * Interface ConfigComponentFactory
+ * Interface ConfigFactory
  * @package App\Common\Config\Component
  */
-interface ConfigComponentFactory
+interface ConfigFactory
 {
     /**
      * @return string
