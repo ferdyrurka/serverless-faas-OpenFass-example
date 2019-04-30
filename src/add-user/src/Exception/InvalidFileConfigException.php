@@ -3,13 +3,13 @@
 namespace App\Exception;
 
 /**
- * Class InvalidConfigException
+ * Class InvalidFileConfigException
  * @package App\Exception
  */
-class InvalidConfigException extends HttpException
+class InvalidFileConfigException extends HttpException
 {
     /**
-     * InvalidConfigException constructor.
+     * InvalidFileConfigException constructor.
      * @param string $message
      */
     public function __construct($message = '')
