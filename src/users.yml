@@ -2,7 +2,7 @@ provider:
   name: openfaas
   gateway: http://127.0.0.1:8080
 functions:
-  add-user:
+  users:
     lang: php7-3
-    handler: ./add-user
-    image: add-user:latest
+    handler: ./users
+    image: users:latest
