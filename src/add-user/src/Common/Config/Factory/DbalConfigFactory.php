@@ -14,6 +14,6 @@ class DbalConfigFactory implements ConfigFactoryInterface
      */
     public function getFilePath(): string
     {
-        return './config/dbal.yml';
+        return './function/config/dbal.yml';
     }
 }
