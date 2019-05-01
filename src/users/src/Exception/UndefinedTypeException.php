@@ -14,6 +14,7 @@ class UndefinedTypeException extends HttpException
      */
     public function __construct()
     {
-        parent::__construct('Undefined function by type', 500);
+        $message = 'Undefined function by type';
+        parent::__construct($message, 500, $message);
     }
 }

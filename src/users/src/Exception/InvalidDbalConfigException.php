@@ -15,6 +15,6 @@ class InvalidDbalConfigException extends HttpException
      */
     public function __construct($message = '')
     {
-        parent::__construct($message, 500);
+        parent::__construct($message, 500, 'Internal server error.');
     }
 }

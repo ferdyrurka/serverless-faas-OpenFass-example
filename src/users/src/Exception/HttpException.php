@@ -14,13 +14,20 @@ class HttpException extends AddUserException
     private $httpCode;
 
     /**
+     * @var string
+     */
+    private $httpMessage;
+
+    /**
      * HttpException constructor.
      * @param string $message
      * @param int $httpCode
+     * @param string $httpMessage
      */
-    public function __construct($message = '', $httpCode = 200)
+    public function __construct($message = '', $httpCode = 200, $httpMessage = '')
     {
         $this->httpCode = $httpCode;
+        $this->httpMessage = $httpMessage;
         parent::__construct($message);
     }
 
@@ -30,5 +37,13 @@ class HttpException extends AddUserException
     public function getHttpCode(): int
     {
         return $this->httpCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHttpMessage(): string
+    {
+        return $this->httpMessage;
     }
 }
