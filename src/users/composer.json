@@ -1,5 +1,5 @@
 {
-  "name": "function-rest-php7.2",
+  "name": "users",
   "description": "Template for function in PHP 7.2",
   "type": "project",
   "require": {
