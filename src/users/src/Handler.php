@@ -36,7 +36,7 @@ class Handler
         } catch (HttpException $httpException) {
             return \json_encode([
                 'statusCode' => $httpException->getHttpCode(),
-                'body' => $httpException->getHttpCode()
+                'body' => $httpException->getHttpMessage()
             ]);
         }
 
