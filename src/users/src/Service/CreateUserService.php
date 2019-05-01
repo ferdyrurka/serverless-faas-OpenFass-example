@@ -7,5 +7,8 @@ namespace App\Service;
 
 class UserService
 {
+    public function createUser(array $data): string
+    {
 
+    }
 }
