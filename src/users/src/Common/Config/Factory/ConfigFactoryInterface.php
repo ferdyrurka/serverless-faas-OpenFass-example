@@ -14,10 +14,10 @@ interface ConfigFactoryInterface
     /**
      * @return string
      */
-    public static function getFilePath(): string;
+    public function getFilePath(): string;
 
     /**
      * @return ParserInterface
      */
-    public static function getParser(): ParserInterface;
+    public function getParser(): ParserInterface;
 }

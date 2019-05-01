@@ -15,7 +15,7 @@ class DbalConfigFactory implements ConfigFactoryInterface
     /**
      * @return string
      */
-    public static function getFilePath(): string
+    public function getFilePath(): string
     {
         return './function/config/dbal.yml';
     }
@@ -23,7 +23,7 @@ class DbalConfigFactory implements ConfigFactoryInterface
     /**
      * @return ParserInterface
      */
-    public static function getParser(): ParserInterface
+    public function getParser(): ParserInterface
     {
         return new YamlParser();
     }
