@@ -4,10 +4,13 @@ declare(strict_types=1);
 namespace App\Common\Database;
 
 use App\Common\Config\Config;
-use App\Common\Config\Factory\DbalConfigFactory;
+use App\Common\Config\Factory\DbalConfigProvider;
+use App\Common\Config\YmlParser;
 use App\Exception\InvalidDbalConfigException;
+use App\Exception\InvalidFileConfigException;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\DriverManager;
 
 /**
@@ -23,9 +26,9 @@ class ConnectionDatabase
 
     /**
      * ConnectionDatabase constructor.
+     *
+     * @throws DBALException
      * @throws InvalidDbalConfigException
-     * @throws \App\Exception\InvalidFileConfigException
-     * @throws \Doctrine\DBAL\DBALException
      */
     public function __construct()
     {
@@ -43,11 +46,10 @@ class ConnectionDatabase
     /**
      * @return array
      * @throws InvalidDbalConfigException
-     * @throws \App\Exception\InvalidFileConfigException
      */
     private function getConnectionParams(): array
     {
-        $configFactory = new Config(new DbalConfigFactory());
+        $configFactory = new Config(new YmlParser(), new DbalConfigProvider());
         $config = $configFactory->getConfig();
 
         if (!isset($config['dbal']['connection'])) {
@@ -59,9 +61,8 @@ class ConnectionDatabase
 
     /**
      * @return Connection
+     * @throws DBALException
      * @throws InvalidDbalConfigException
-     * @throws \App\Exception\InvalidFileConfigException
-     * @throws \Doctrine\DBAL\DBALException
      */
     private function createConnection(): Connection
     {

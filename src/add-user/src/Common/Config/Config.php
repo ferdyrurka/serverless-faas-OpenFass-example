@@ -3,12 +3,11 @@ declare(strict_types=1);
 
 namespace App\Common\Config;
 
-use App\Common\Config\Factory\ConfigFactoryInterface;
-use App\Exception\InvalidFileConfigException;
-use Symfony\Component\Yaml\Yaml;
+use App\Common\Config\Factory\DbalConfigProvider;
 
 /**
  * Class Config
+ *
  * @package App\Common\Config
  */
 class Config
@@ -20,12 +19,14 @@ class Config
 
     /**
      * Config constructor.
-     * @param ConfigFactoryInterface $configFactory
-     * @throws InvalidFileConfigException
+     *
+     * @param ParserInterface    $parser
+     * @param DbalConfigProvider $configProvider
+     *
      */
-    public function __construct(ConfigFactoryInterface $configFactory)
+    public function __construct(ParserInterface $parser, DbalConfigProvider $configProvider)
     {
-        $this->config = $this->parseConfig($configFactory->getFilePath());
+        $this->config = $parser->parseConfig($configProvider->getFilePath());
     }
 
     /**
@@ -38,19 +39,5 @@ class Config
         }
 
         return $this->config;
-    }
-
-    /**
-     * @param string $pathFile
-     * @return array|null
-     * @throws InvalidFileConfigException
-     */
-    private function parseConfig(string $pathFile): ?array
-    {
-        if (!file_exists($pathFile)) {
-            throw new InvalidFileConfigException('Config file doesn\'t exist by path: ' . $pathFile);
-        }
-
-        return Yaml::parseFile($pathFile);
     }
 }

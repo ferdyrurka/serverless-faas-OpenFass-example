@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Tests\Common\Database;
 
 use App\Common\Config\Config;
-use App\Common\Config\Factory\DbalConfigFactory;
+use App\Common\Config\Factory\DbalConfigProvider;
 use App\Common\Database\ConnectionDatabase;
 use App\Exception\InvalidDbalConfigException;
 use Doctrine\DBAL\Configuration;
@@ -25,7 +25,7 @@ class ConnectionDatabaseTest extends TestCase
     protected function setUp(): void
     {
         $this->configFactory = Mockery::mock('overload:' . Config::class);
-        $this->configFactory->shouldReceive('__construct')->withArgs([DbalConfigFactory::class]);
+        $this->configFactory->shouldReceive('__construct')->withArgs([DbalConfigProvider::class]);
     }
 
     /**
