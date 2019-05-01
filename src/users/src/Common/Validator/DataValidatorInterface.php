@@ -13,5 +13,10 @@ interface DataValidatorInterface
      * @param array $data
      * @return bool
      */
-    public static function validate(array $data): bool;
+    public function validate(array $data): bool;
+
+    /**
+     * @return array|null
+     */
+    public function getErrors(): ?array;
 }
