@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace App;
 
 use App\Common\Database\ConnectionDatabase;
+use App\Exception\HttpException;
+use App\Exception\UndefinedTypeException;
+use App\Service\CreateUserService;
 
 /**
  * Class Handler
@@ -14,14 +17,39 @@ class Handler
     /**
      * @param array $data
      * @return string
-     * @throws Exception\InvalidDbalConfigException
-     * @throws Exception\InvalidFileConfigException
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws UndefinedTypeException
      */
     public function handle(array $data): string {
-        $connectionDatabase = new ConnectionDatabase();
-        $connection = $connectionDatabase->getConnection();
+        try {
+            if (!isset($data['type'])) {
+                throw new UndefinedTypeException();
+            }
 
-        return \json_encode(['Hello']);
+            switch ($data['type']) {
+                case 'create':
+                    $userService = new CreateUserService();
+                    $responseModel = $userService->handle($this->clearData($data));
+                    break;
+                default:
+                    throw new UndefinedTypeException();
+            }
+        } catch (HttpException $httpException) {
+            return \json_encode([
+                'statusCode' => $httpException->getHttpCode(),
+                'body' => $httpException->getHttpCode()
+            ]);
+        }
+
+        return \json_encode([
+            'statusCode' => $responseModel->getStatusCode(),
+            'body' => $responseModel->getBody()
+        ]);
+    }
+
+    private function clearData(array $data): array
+    {
+        unset($data['type']);
+
+        return $data;
     }
 }
