@@ -23,6 +23,10 @@
             <!-- Exclude directory and file -->
             <exclude>
                 <directory>./src/Common/Config/Factory</directory>
+                <directory>./src/Common/Model</directory>
+                <directory>./src/Entity</directory>
+                <directory>./src/Exception</directory>
+                <directory>./src/Repository</directory>
             </exclude>
         </whitelist>
     </filter>
