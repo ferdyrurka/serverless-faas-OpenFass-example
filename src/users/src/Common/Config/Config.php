@@ -21,11 +21,12 @@ class Config
     /**
      * Config constructor.
      * @param ConfigFactoryInterface $configFactory
-     * @throws InvalidFileConfigException
      */
     public function __construct(ConfigFactoryInterface $configFactory)
     {
-        $this->config = $this->parseConfig($configFactory->getFilePath());
+        $this->config = $configFactory->getParser()
+            ->parse($configFactory->getFilePath())
+        ;
     }
 
     /**
@@ -38,19 +39,5 @@ class Config
         }
 
         return $this->config;
-    }
-
-    /**
-     * @param string $pathFile
-     * @return array|null
-     * @throws InvalidFileConfigException
-     */
-    private function parseConfig(string $pathFile): ?array
-    {
-        if (!file_exists($pathFile)) {
-            throw new InvalidFileConfigException('Config file doesn\'t exist by path: ' . $pathFile);
-        }
-
-        return Yaml::parseFile($pathFile);
     }
 }
