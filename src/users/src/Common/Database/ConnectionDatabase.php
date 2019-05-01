@@ -24,7 +24,6 @@ class ConnectionDatabase
     /**
      * ConnectionDatabase constructor.
      * @throws InvalidDbalConfigException
-     * @throws \App\Exception\InvalidFileConfigException
      * @throws \Doctrine\DBAL\DBALException
      */
     public function __construct()
@@ -43,7 +42,6 @@ class ConnectionDatabase
     /**
      * @return array
      * @throws InvalidDbalConfigException
-     * @throws \App\Exception\InvalidFileConfigException
      */
     private function getConnectionParams(): array
     {
@@ -60,7 +58,6 @@ class ConnectionDatabase
     /**
      * @return Connection
      * @throws InvalidDbalConfigException
-     * @throws \App\Exception\InvalidFileConfigException
      * @throws \Doctrine\DBAL\DBALException
      */
     private function createConnection(): Connection
