@@ -16,7 +16,7 @@ interface DataValidatorInterface
     public function validate(array $data): bool;
 
     /**
-     * @return array|null
+     * @return array
      */
-    public function getErrors(): ?array;
+    public function getErrors(): array;
 }
