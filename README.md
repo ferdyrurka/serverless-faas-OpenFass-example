@@ -64,6 +64,10 @@ Alternative method is add by web UI.
 - OpenFaas portal: http://127.0.0.1:8080
 - HelloCsharp function: http://127.0.0.1:8080/function/hello-csharp 
 
+## What I mistake
+
+* Half-baked over engineering in Common/Config on add-user function
+
 ## Author
 
 Łukasz Staniszewski < kontakt@lukaszstaniszewski.pl >
