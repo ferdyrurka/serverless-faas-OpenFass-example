@@ -30,15 +30,15 @@ class Handler
             switch ($data['type']) {
                 case 'create':
                     $userService = new CreateUserService();
-                    $responseModel = $userService->handle($data);
                     break;
                 case 'findAll':
                     $userService = new FindAllUserService();
-                    $responseModel = $userService->handle($data);
                     break;
                 default:
                     throw new UndefinedTypeException();
             }
+
+            $responseModel = $userService->handle($data);
         } catch (HttpException $httpException) {
             return \json_encode([
                 'statusCode' => $httpException->getHttpCode(),
