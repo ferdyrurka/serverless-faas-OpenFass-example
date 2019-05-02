@@ -61,7 +61,15 @@ class CreateUserServiceTest extends TestCase
         $this->setUpCreateUserDataValidator(true);
 
         $userRepository = Mockery::mock('overload:' . UserRepository::class);
-        $userRepository->shouldReceive('save')->withArgs([User::class])->once();
+        $userRepository->shouldReceive('save')->withArgs(
+            function (User $user): bool {
+                if ($user->getUsername() !== 'usernamevalue') {
+                    return false;
+                }
+
+                return true;
+            }
+        )->once();
 
         $responseModel = $this->createUserService->handle(['username' => 'UsernameValue']);
         $this->assertEquals(200, $responseModel->getStatusCode());

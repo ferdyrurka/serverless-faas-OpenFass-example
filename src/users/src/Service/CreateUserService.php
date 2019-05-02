@@ -19,7 +19,7 @@ class CreateUserService implements UserServiceInterface
         }
 
         $date = new DateTime('now');
-        $user = new User($data['username'], $date->getTimestamp());
+        $user = new User(strtolower($data['username']), $date->getTimestamp());
 
         $userRepository = new UserRepository();
         $userRepository->save($user);
