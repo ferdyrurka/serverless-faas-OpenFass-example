@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 use \Mockery;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -102,9 +103,10 @@ class CreateUserDataValidatorTest extends TestCase
             ->withArgs(
                 function (string $username, array $constraints): bool {
                     if ($username !== 'UsernameValue' ||
-                        !isset($constraints[0], $constraints[1]) ||
+                        !isset($constraints[0], $constraints[1], $constraints[2]) ||
                         !$constraints[0] instanceof Length ||
-                        !$constraints[1] instanceof NotBlank
+                        !$constraints[1] instanceof NotBlank ||
+                        !$constraints[2] instanceof Regex
                     ) {
                         return false;
                     }
