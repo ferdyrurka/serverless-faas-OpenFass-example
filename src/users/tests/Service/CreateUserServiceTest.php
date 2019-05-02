@@ -56,18 +56,45 @@ class CreateUserServiceTest extends TestCase
      * @runInSeparateProcess
      * @preserveGlobalState disabled
      */
+    public function handleUserFound(): void
+    {
+        $this->setUpCreateUserDataValidator(true);
+
+        $userRepository = Mockery::mock('overload:' . UserRepository::class);
+        $userRepository->shouldReceive('getCountByUsername')->withArgs(
+            function (string $username): bool {
+                return $this->validateArgsUserRepository($username);
+            }
+        )
+            ->once()
+            ->andReturn(1)
+        ;
+
+        $responseModel = $this->createUserService->handle(['username' => 'UsernameValue']);
+        $this->assertEquals(400, $responseModel->getStatusCode());
+    }
+
+    /**
+     * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function handleOk(): void
     {
         $this->setUpCreateUserDataValidator(true);
 
         $userRepository = Mockery::mock('overload:' . UserRepository::class);
+        $userRepository->shouldReceive('getCountByUsername')->withArgs(
+            function (string $username): bool {
+                return $this->validateArgsUserRepository($username);
+            }
+        )
+            ->once()
+            ->andReturn(0)
+        ;
         $userRepository->shouldReceive('save')->withArgs(
             function (User $user): bool {
-                if ($user->getUsername() !== 'usernamevalue') {
-                    return false;
-                }
-
-                return true;
+                return $this->validateArgsUserRepository($user->getUsername());
             }
         )
             ->once()
@@ -88,7 +115,7 @@ class CreateUserServiceTest extends TestCase
             function (array $args): bool {
                 if (!isset($args['username']) ||
                     $args['username'] !== 'UsernameValue'
-                ){
+                ) {
                     return false;
                 }
 
@@ -98,5 +125,10 @@ class CreateUserServiceTest extends TestCase
             ->once()
             ->andReturn($returnValidate)
         ;
+    }
+
+    private function validateArgsUserRepository(string $username): bool
+    {
+        return !($username !== 'usernamevalue');
     }
 }

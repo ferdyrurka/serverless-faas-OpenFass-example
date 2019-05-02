@@ -28,6 +28,22 @@ class UserRepository
     }
 
     /**
+     * @param string $username
+     * @return int
+     */
+    public function getCountByUsername(string $username): int
+    {
+        return $this->queryBuilder
+            ->select('count(u.id)')
+            ->from('users', 'u')
+            ->where('u.username = ?')
+            ->setParameter(0, $username)
+            ->execute()
+            ->rowCount()
+        ;
+    }
+
+    /**
      * @param User $user
      */
     public function save(User $user): void
