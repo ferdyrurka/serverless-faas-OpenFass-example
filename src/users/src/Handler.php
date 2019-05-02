@@ -7,6 +7,7 @@ use App\Common\Database\ConnectionDatabase;
 use App\Exception\HttpException;
 use App\Exception\UndefinedTypeException;
 use App\Service\CreateUserService;
+use App\Service\FindAllUserService;
 
 /**
  * Class Handler
@@ -17,8 +18,10 @@ class Handler
     /**
      * @param array $data
      * @return string
+     * @throws \Exception
      */
-    public function handle(array $data): string {
+    public function handle(array $data): string
+    {
         try {
             if (!isset($data['type'])) {
                 throw new UndefinedTypeException();
@@ -27,6 +30,10 @@ class Handler
             switch ($data['type']) {
                 case 'create':
                     $userService = new CreateUserService();
+                    $responseModel = $userService->handle($data);
+                    break;
+                case 'findAll':
+                    $userService = new FindAllUserService();
                     $responseModel = $userService->handle($data);
                     break;
                 default:

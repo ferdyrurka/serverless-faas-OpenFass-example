@@ -6,6 +6,7 @@ use App\Common\Model\ResponseModel;
 use App\Exception\UndefinedTypeException;
 use App\Handler;
 use App\Service\CreateUserService;
+use App\Service\FindAllUserService;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
 use \Mockery;
@@ -22,6 +23,11 @@ class HandlerTest extends TestCase
      * @var Handler
      */
     private $handler;
+
+    /**
+     * @var ResponseModel
+     */
+    private $responseModel;
 
     /**
      *
@@ -58,9 +64,7 @@ class HandlerTest extends TestCase
      */
     public function handleCreateUser(): void
     {
-        $responseModel = Mockery::mock(ResponseModel::class);
-        $responseModel->shouldReceive('getStatusCode')->once()->andReturn(200);
-        $responseModel->shouldReceive('getBody')->once()->andReturn(['success' => true]);
+        $this->setUpResponseModel();
 
         $createUserService = Mockery::mock('overload:' . CreateUserService::class);
         $createUserService->shouldReceive('handle')->once()->withArgs(
@@ -72,7 +76,7 @@ class HandlerTest extends TestCase
                 return true;
             }
         )
-            ->andReturn($responseModel)
+            ->andReturn($this->responseModel)
         ;
 
         $this->handler->handle(
@@ -81,5 +85,40 @@ class HandlerTest extends TestCase
                 'username' => 'UsernameValue'
             ]
         );
+    }
+
+    /**
+     * @throws \Exception
+     * @test
+     * @runInSeparateProcess
+     */
+    public function handleFindAll(): void
+    {
+        $this->setUpResponseModel();
+
+        $createUserService = Mockery::mock('overload:' . FindAllUserService::class);
+        $createUserService->shouldReceive('handle')->once()->withArgs(
+            function (array $data): bool {
+                if (!isset($data['type'])) {
+                    return false;
+                }
+
+                return true;
+            }
+        )
+            ->andReturn($this->responseModel)
+        ;
+
+        $this->handler->handle(['type' => 'findAll']);
+    }
+
+    /**
+     *
+     */
+    private function setUpResponseModel(): void
+    {
+        $this->responseModel = Mockery::mock(ResponseModel::class);
+        $this->responseModel->shouldReceive('getStatusCode')->once()->andReturn(200);
+        $this->responseModel->shouldReceive('getBody')->once()->andReturn(['success' => true]);
     }
 }
