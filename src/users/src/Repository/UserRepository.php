@@ -28,6 +28,19 @@ class UserRepository
     }
 
     /**
+     * @return array
+     */
+    public function findAll(): array
+    {
+        return $this->queryBuilder
+            ->select('u.username, u.created_at')
+            ->from('users', 'u')
+            ->execute()
+            ->fetchAll()
+        ;
+    }
+
+    /**
      * @param string $username
      * @return int
      */
