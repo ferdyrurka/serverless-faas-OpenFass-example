@@ -69,7 +69,9 @@ class CreateUserServiceTest extends TestCase
 
                 return true;
             }
-        )->once();
+        )
+            ->once()
+        ;
 
         $responseModel = $this->createUserService->handle(['username' => 'UsernameValue']);
         $this->assertEquals(200, $responseModel->getStatusCode());
