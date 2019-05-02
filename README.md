@@ -26,6 +26,7 @@ cd faas
 git checkout 0.13.0
 sh deploy_stack.sh
 cd ../ && sudo rm -r ./faas
+docker stack deploy func --compose-file docker-compose.yml
 ```
 
 After execute command, you find in CLI your password and username to OpenFass.
