@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres:11.2
+    environment:
+      - POSTGRES_PASSWORD=xD5Da2262RdJgBJK
+      - POSTGRES_USER=ferdyrurka
+      - POSTGRES_DB=open-faas-example
+    deploy:
+      placement:
+        constraints:
+          - 'node.role == manager'
+          - 'node.platform.os == linux'
+    volumes:
+      - postgresqlDb:/var/lib/postgresql/data
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    networks:
+      - functions
+
+volumes:
+  postgresqlDb:
+    driver: local
+
+networks:
+  functions:
+    driver: overlay
+    attachable: true
+    labels:
+      - "openfaas=true"
