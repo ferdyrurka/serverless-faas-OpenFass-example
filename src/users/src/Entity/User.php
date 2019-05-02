@@ -10,6 +10,11 @@ namespace App\Entity;
 class User
 {
     /**
+     * @var int|null
+     */
+    private $id;
+
+    /**
      * @var string
      */
     private $username;
@@ -23,11 +28,21 @@ class User
      * User constructor.
      * @param string $username
      * @param int $createdAt
+     * @param int|null $id
      */
-    public function __construct(string $username, int $createdAt)
+    public function __construct(string $username, int $createdAt, int $id = null)
     {
+        $this->id = $id;
         $this->username = $username;
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     /**
