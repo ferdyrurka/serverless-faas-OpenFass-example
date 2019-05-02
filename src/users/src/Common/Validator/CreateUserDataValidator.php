@@ -5,6 +5,7 @@ namespace App\Common\Validator;
 
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Validation;
 
 class CreateUserDataValidator implements DataValidatorInterface
@@ -24,15 +25,20 @@ class CreateUserDataValidator implements DataValidatorInterface
 
         $validator = Validation::createValidator();
         $violations = $validator->validate($data['username'], [
-           new Length(
-               [
+            new Length(
+                [
                    'min' => 6,
                    'minMessage' => 'Minimum username length is 6 chars',
                    'max' => 64,
                    'maxMessage' => 'Maximum username length is 6 chars',
-               ]
-           ),
-           new NotBlank()
+                ]
+            ),
+            new NotBlank(),
+            new Regex(
+                [
+                    'pattern' => '/^([A-Z|a-z|0-9]){6,64}$/'
+                ]
+            )
         ]);
 
         if (\count($violations) !== 0) {
