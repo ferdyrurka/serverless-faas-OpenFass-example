@@ -3,7 +3,6 @@
 namespace App\Tests;
 
 use App\Common\Model\ResponseModel;
-use App\Exception\UndefinedTypeException;
 use App\Handler;
 use App\Service\CreateUserService;
 use App\Service\FindAllUserService;
@@ -38,7 +37,7 @@ class HandlerTest extends TestCase
     }
 
     /**
-     * @throws UndefinedTypeException
+     * @throws \Exception
      * @test
      */
     public function notTypeInRequestException(): void
@@ -48,7 +47,7 @@ class HandlerTest extends TestCase
     }
 
     /**
-     * @throws UndefinedTypeException
+     * @throws \Exception
      * @test
      */
     public function undefinedTypeException(): void
@@ -58,7 +57,7 @@ class HandlerTest extends TestCase
     }
 
     /**
-     * @throws UndefinedTypeException
+     * @throws \Exception
      * @test
      * @runInSeparateProcess
      */
