@@ -13,13 +13,13 @@ services:
           - 'node.role == manager'
           - 'node.platform.os == linux'
     volumes:
-      - postgresqlDb:/var/lib/postgresql/data
+      - pgsql:/var/lib/postgresql/data
       - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
     networks:
       - functions
 
 volumes:
-  postgresqlDb:
+  pgsql:
     driver: local
 
 networks:
