@@ -65,9 +65,7 @@ class HandlerTest extends TestCase
         $createUserService = Mockery::mock('overload:' . CreateUserService::class);
         $createUserService->shouldReceive('handle')->once()->withArgs(
             function (array $data): bool {
-                if (isset($data['type']) ||
-                    !isset($data['username'])
-                ) {
+                if (!isset($data['username'], $data['type'])) {
                     return false;
                 }
 

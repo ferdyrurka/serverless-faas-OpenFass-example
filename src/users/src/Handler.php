@@ -17,7 +17,6 @@ class Handler
     /**
      * @param array $data
      * @return string
-     * @throws UndefinedTypeException
      */
     public function handle(array $data): string {
         try {
@@ -28,7 +27,7 @@ class Handler
             switch ($data['type']) {
                 case 'create':
                     $userService = new CreateUserService();
-                    $responseModel = $userService->handle($this->clearData($data));
+                    $responseModel = $userService->handle($data);
                     break;
                 default:
                     throw new UndefinedTypeException();
@@ -36,7 +35,7 @@ class Handler
         } catch (HttpException $httpException) {
             return \json_encode([
                 'statusCode' => $httpException->getHttpCode(),
-                'body' => $httpException->getHttpMessage()
+                'body' => $httpException->getMessage()
             ]);
         }
 
@@ -44,12 +43,5 @@ class Handler
             'statusCode' => $responseModel->getStatusCode(),
             'body' => $responseModel->getBody()
         ]);
-    }
-
-    private function clearData(array $data): array
-    {
-        unset($data['type']);
-
-        return $data;
     }
 }
