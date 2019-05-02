@@ -33,8 +33,8 @@ class UserRepository
     public function findAll(): array
     {
         return $this->queryBuilder
-            ->select('u.username, u.created_at')
-            ->from('users', 'u')
+            ->select('*')
+            ->from('users')
             ->execute()
             ->fetchAll()
         ;
@@ -47,9 +47,9 @@ class UserRepository
     public function getCountByUsername(string $username): int
     {
         return $this->queryBuilder
-            ->select('count(u.id)')
-            ->from('users', 'u')
-            ->where('u.username = ?')
+            ->select('*')
+            ->from('users')
+            ->where('username = ?')
             ->setParameter(0, $username)
             ->execute()
             ->rowCount()

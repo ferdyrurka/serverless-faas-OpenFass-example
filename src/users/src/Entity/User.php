@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use \DateTime;
+
 /**
  * Class User
  * @package App\Entity
@@ -15,16 +17,16 @@ class User
     private $username;
 
     /**
-     * @var integer
+     * @var string
      */
     private $createdAt;
 
     /**
      * User constructor.
      * @param string $username
-     * @param int $createdAt
+     * @param string $createdAt
      */
-    public function __construct(string $username, int $createdAt)
+    public function __construct(string $username, string $createdAt)
     {
         $this->username = $username;
         $this->createdAt = $createdAt;
@@ -39,9 +41,9 @@ class User
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getCreatedAt(): int
+    public function getCreatedAt(): string
     {
         return $this->createdAt;
     }
