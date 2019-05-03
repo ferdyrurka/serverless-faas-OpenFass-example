@@ -8,10 +8,9 @@ if (file_exists('function/vendor/autoload.php')) {
 }
 
 $stdin = file_get_contents("php://stdin");
-$arrayStdin = [];
 
-if (!empty($stdin)) {
-    $arrayStdin = \json_decode($stdin, true);
+if (empty($stdin) || ($arrayStdin = \json_decode($stdin, true)) === null) {
+    $arrayStdin = [];
 }
 
 $response = (new App\Handler())->handle($arrayStdin);
