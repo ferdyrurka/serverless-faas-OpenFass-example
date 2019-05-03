@@ -5,9 +5,9 @@ namespace App\Exception;
 use \Exception;
 
 /**
- * Class AddUserException
+ * Class UsersException
  * @package App\Exception
  */
-class AddUserException extends Exception
+class UsersException extends Exception
 {
 }

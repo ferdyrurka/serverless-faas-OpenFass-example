@@ -6,7 +6,7 @@ namespace App\Exception;
  * Class HttpException
  * @package App\Exception
  */
-class HttpException extends AddUserException
+class HttpException extends UsersException
 {
     /**
      * @var integer
