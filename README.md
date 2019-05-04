@@ -71,10 +71,6 @@ Alternative method is add by web UI.
 - [x] Own template to PHP7
 - [x] Create and save to database user by PHP7
 - [ ] Makefile
-- [ ] Own template to PHP7
-    - [ ] By Dockerfile
-    - [ ] Custom ext and php.ini
-- [ ] Hello world by second own template
 
 ## What I mistake
 
