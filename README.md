@@ -74,7 +74,7 @@ Alternative method is add by web UI.
 
 ## What I mistake
 
-* Half-baked over engineering in Common/Config on add-user function
+* Half-baked over engineering in Common/Config on users function
 
 ## Author
 
