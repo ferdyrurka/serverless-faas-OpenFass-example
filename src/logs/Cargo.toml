@@ -1,8 +1,0 @@
-[package]
-name = "logs"
-version = "0.1.0"
-authors = ["Lukasz Staniszewski <kontakt@lukaszstaniszewski.pl>"]
-
-[dependencies]
-diesel = { version = "1.4.*", features = ["postgres"] }
-dotenv = "0.13.0"
