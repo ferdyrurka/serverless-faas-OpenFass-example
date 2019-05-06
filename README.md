@@ -66,13 +66,20 @@ Alternative method is add by web UI.
 - OpenFaas portal: http://127.0.0.1:8080
 - HelloCsharp function: http://127.0.0.1:8080/function/hello-csharp 
 
+## Pull template, build & deploy all function
+
+```bash
+cd ./src
+make deploy
+```
+
 ## Todo
 
 - [x] C# Hello World
 - [x] PHP7 example function
 - [x] Own template to PHP7
 - [x] Create and save to database user by PHP7
-- [ ] Makefile to deploy and build all function
+- [x] Makefile to deploy and build all function
 
 ## What I mistake
 
