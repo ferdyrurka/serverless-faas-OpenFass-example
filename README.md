@@ -2,7 +2,7 @@
 
 ## Description
 
-Soon
+Mini project to learn OpenFaas, Faas and ServerLess.
 
 ## Stack
 
@@ -25,20 +25,22 @@ cd faas
 git checkout 0.13.0
 sh deploy_stack.sh
 cd ../ && sudo rm -r ./faas
+
 docker stack deploy func --compose-file docker-compose.yml
 ```
 
 After execute command, you find in CLI your password and username to OpenFass.
 
 **Example data:**
-
+```
 [Credentials]
+    username: admin
 
-username: admin
- 
-password: 547d9s578c23309bb1aa020e6395b6e7c0cc426d6a4707c513f
- 
-echo -n 5473d0578s23309bb1aa020e6395b6e7c0cc42656d4707c513f | faas-cli login --username=admin --password-stdin
+    password: 547d9s578c23309bb1aa020e6395b6e7c0cc426d6a4707c513f
+
+    echo -n 5473d0578s23309bb1aa020e6395b6e7c0cc42656d4707c513f | faas-cli login --username=admin --password-stdin
+```
+Install OpenFaas cli
 
 ```bash
 curl -sL https://cli.openfaas.com | sudo sh
@@ -70,7 +72,7 @@ Alternative method is add by web UI.
 - [x] PHP7 example function
 - [x] Own template to PHP7
 - [x] Create and save to database user by PHP7
-- [ ] Makefile
+- [ ] Makefile to deploy and build all function
 
 ## What I mistake
 
